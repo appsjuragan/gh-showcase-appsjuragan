@@ -134,6 +134,38 @@ header {
   overflow: hidden;
 }
 
+.hero-title {
+  position: relative;
+  z-index: 2;
+  font-size: clamp(3.2rem, 11vw, 7.2rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  background: var(--text-primary);
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-primary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2.5rem;
+  line-height: 1.05;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.hero-subtitle {
+  position: relative;
+  z-index: 2;
+  font-size: clamp(1.4rem, 3.2vw, 1.8rem);
+  color: var(--text-secondary);
+  max-width: 900px;
+  margin-bottom: 4rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s 0.8s forwards;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  padding: 0 2rem;
+}
+
 #matrix-canvas {
   position: absolute;
   top: 0;
@@ -527,6 +559,10 @@ footer {
 
 .char {
   display: inline-block;
+  background: inherit;
+  -webkit-background-clip: inherit;
+  background-clip: inherit;
+  -webkit-text-fill-color: inherit;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.8s forwards;
