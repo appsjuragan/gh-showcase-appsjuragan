@@ -222,6 +222,10 @@ function initMatrix() {
 }
 
 document.querySelector('#app').innerHTML = `
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
+    <span class="sun-icon">☀️</span>
+    <span class="moon-icon">🌙</span>
+  </button>
   <header>
     <canvas id="matrix-canvas"></canvas>
     <div class="cursor-follower"></div>
@@ -261,3 +265,27 @@ document.querySelector('#app').innerHTML = `
 `;
 
 fetchData();
+
+// Theme Logic
+function initTheme() {
+  const toggle = document.getElementById('theme-toggle');
+  const currentTheme = localStorage.getItem('theme') ||
+    (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+
+  if (currentTheme === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+
+  toggle.addEventListener('click', () => {
+    let theme = document.documentElement.getAttribute('data-theme');
+    if (theme === 'light') {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+    }
+  });
+}
+
+initTheme();
